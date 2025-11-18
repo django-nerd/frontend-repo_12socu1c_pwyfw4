@@ -44,9 +44,18 @@ export default function PageList({ backendUrl, filter, onSelect }) {
           onClick={() => onSelect?.(it)}
           className="p-3 hover:bg-slate-800/50 cursor-pointer"
         >
-          <div className="text-slate-200 text-sm font-medium">{it.title || it.path}</div>
-          <div className="text-slate-400 text-xs truncate">{it.url}</div>
-          <div className="text-slate-500 text-xs">Tables: {it.table_count}</div>
+          <div className="flex items-center justify-between gap-2">
+            <div>
+              <div className="text-slate-200 text-sm font-medium">{it.title || it.path}</div>
+              <div className="text-slate-400 text-xs truncate">{it.url}</div>
+            </div>
+            <div className="text-right text-xs text-slate-400">
+              <div>Tables: {it.table_count}</div>
+              {typeof it.conversion_count === 'number' && (
+                <div>Rates: {it.conversion_count}</div>
+              )}
+            </div>
+          </div>
         </li>
       ))}
     </ul>

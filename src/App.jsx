@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import ScrapeForm from "./components/ScrapeForm";
 import PageList from "./components/PageList";
 import PageView from "./components/PageView";
+import Conversions from "./components/Conversions";
 
 function App() {
   const backendUrl = useMemo(() => import.meta.env.VITE_BACKEND_URL || "http://localhost:8000", []);
@@ -23,6 +24,7 @@ function App() {
             <h2 className="text-slate-100 font-semibold mb-3">Saved pages</h2>
             <PageList key={refreshKey} backendUrl={backendUrl} filter={filter} onSelect={setSelected} />
           </div>
+          <Conversions backendUrl={backendUrl} />
         </section>
         <section className="md:col-span-2 bg-slate-900/60 border border-slate-800/80 rounded-xl p-4 min-h-[300px]">
           <PageView backendUrl={backendUrl} selected={selected} />
